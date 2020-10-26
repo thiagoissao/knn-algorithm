@@ -1,2 +1,6 @@
 # base para testes
 /bases
+
+#dependencias js
+/js-knn/node_modules
+/js-knn/package-lock.json
