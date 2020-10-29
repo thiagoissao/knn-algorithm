@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "implementacao do knn",
   "main": "main.js",
-  "dependencies": {
-    "line-reader": "^0.4.0"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "scripts": {
     "start": "node main.js",
