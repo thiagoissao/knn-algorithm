@@ -1,10 +1,10 @@
-const TRAIN_PATH = '../bases/train_59_small.data'
-const TEST_PATH = '../bases/test_59_small.data'
-const K = 10
+const TRAIN_PATH = '../bases/train_59.data'
+const TEST_PATH = '../bases/test_59.data'
+const K = 100
 
 const fs = require('fs')
 
-const init = (trainPath, testPath) => {
+const getDatabases = (trainPath, testPath) => {
   let trainDatabase = fs.readFileSync(trainPath, { encoding: 'utf8', flag: 'r' }).split('\n')
   trainDatabase.pop() //remove pois é uma string vazia por causa da última linha do arquivo
   let testDatabase = fs.readFileSync(testPath, { encoding: 'utf8', flag: 'r' }).split('\n')
@@ -15,31 +15,64 @@ const init = (trainPath, testPath) => {
   }
 }
 
-const execute = (databases, k) => {
+const getDistances = databases => {
   const { train, test } = databases
-  let trainClasses = []
 
   const sortedDistances = test.map(rowTest => {
     const itemTest = rowTest.split(',')
     itemTest.pop() //Remove class
+
     const exponentiations = train.map(rowTrain => {
       const itemTrain = rowTrain.split(',')
-      trainClasses.push(itemTrain.pop()) //Remove class
-      return itemTrain.map((columnTrain, index) => {
+      const classe = itemTrain.pop() //Remove class
+      const values = itemTrain.map((columnTrain, index) => {
         if (typeof +columnTrain === 'number' && typeof +itemTest === 'number') {
           const subtract = itemTest[index] - columnTrain
           return Math.pow(subtract, 2)
         }
         return 0
       })
+      return ({ classe, values })
     })
-    const euclidianaDistances = exponentiations.map(exp => Math.sqrt(exp.reduce((acc, cur) => acc += cur, 0)))
-    return euclidianaDistances.sort()
+
+    const euclidianaDistances = exponentiations.map(exp => ({ class: exp.classe, distance: Math.sqrt(exp.values.reduce((acc, cur) => acc += cur, 0)) }))
+    return euclidianaDistances.sort((a, b) => a.distance - b.distance)
+  })
+  return sortedDistances
+}
+
+const findClasses = (sortedDistances, k) => {
+  const classesCounts = sortedDistances.map(item =>
+    item.slice(0, k).reduce((acc, curr) => ({
+      ...acc,
+      [curr.class]: acc[curr.class] = acc[curr.class] + 1
+    }), {
+      samba: 0,
+      sertanejo: 0,
+      forro: 0,
+      rap: 0,
+      axe: 0,
+      bossa_nova: 0
+    })
+  )
+  const definitive = classesCounts.map(item => {
+    let highest = -Infinity;
+    let key;
+    Object.entries(item).forEach(([nameClass, quantity]) => {
+      if (item[nameClass] > highest) {
+        highest = quantity;
+        key = nameClass;
+      }
+    })
+    return key;
   })
 
-  console.log(sortedDistances)
+  return definitive
 }
 
 //Chamadas das funções
-const databases = init(TRAIN_PATH, TEST_PATH)
-execute(databases, K)
+const databases = getDatabases(TRAIN_PATH, TEST_PATH)
+const sortedDistances = getDistances(databases, K)
+const result = findClasses(sortedDistances, K)
+
+console.log(result)
