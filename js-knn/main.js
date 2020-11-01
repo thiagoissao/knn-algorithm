@@ -1,8 +1,21 @@
-const TRAIN_PATH = '../bases/train_59.data'
-const TEST_PATH = '../bases/test_59.data'
-const K = 100
-
 const fs = require('fs')
+
+const getParams = () => {
+  const TRAIN_PATH = process.argv[2]
+  const TEST_PATH = process.argv[3]
+  const K = process.argv[4]
+
+  if (!TRAIN_PATH || !TEST_PATH || !K) {
+    console.error('Passagem incorreta de parâmetros!!')
+    console.error('Ex: ../train_59.data ../test_59.data 10\n ')
+    return {
+      TRAIN_PATH: undefined,
+      TEST_PATH: undefined,
+      K: undefined
+    }
+  }
+  return { TRAIN_PATH, TEST_PATH, K }
+}
 
 const getDatabases = (trainPath, testPath) => {
   let trainDatabase = fs.readFileSync(trainPath, { encoding: 'utf8', flag: 'r' }).split('\n')
@@ -71,6 +84,7 @@ const findClasses = (sortedDistances, k) => {
 }
 
 //Chamadas das funções
+const { TRAIN_PATH, TEST_PATH, K } = getParams()
 const databases = getDatabases(TRAIN_PATH, TEST_PATH)
 const sortedDistances = getDistances(databases, K)
 const result = findClasses(sortedDistances, K)
