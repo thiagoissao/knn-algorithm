@@ -1,0 +1,1 @@
+node main.js ../bases/train_59.data ../bases/test_59_small.data 100 

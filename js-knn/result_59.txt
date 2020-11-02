@@ -1,0 +1,31 @@
+
+> js-knn@1.0.0 start /home/thiago/Desktop/knn-algorithm/js-knn
+> node main.js
+
+[
+  'forro',      'samba',     'sertanejo',  'forro',     'samba',
+  'axe',        'samba',     'forro',      'samba',     'samba',
+  'sertanejo',  'forro',     'samba',      'samba',     'forro',
+  'sertanejo',  'sertanejo', 'sertanejo',  'samba',     'bossa_nova',
+  'sertanejo',  'forro',     'axe',        'forro',     'bossa_nova',
+  'forro',      'sertanejo', 'sertanejo',  'sertanejo', 'samba',
+  'forro',      'samba',     'bossa_nova', 'forro',     'forro',
+  'forro',      'samba',     'bossa_nova', 'forro',     'sertanejo',
+  'sertanejo',  'samba',     'samba',      'samba',     'samba',
+  'samba',      'samba',     'samba',      'samba',     'bossa_nova',
+  'forro',      'samba',     'sertanejo',  'samba',     'axe',
+  'forro',      'samba',     'sertanejo',  'forro',     'samba',
+  'sertanejo',  'forro',     'sertanejo',  'samba',     'bossa_nova',
+  'samba',      'forro',     'bossa_nova', 'sertanejo', 'sertanejo',
+  'samba',      'forro',     'sertanejo',  'forro',     'forro',
+  'samba',      'forro',     'samba',      'sertanejo', 'forro',
+  'forro',      'samba',     'sertanejo',  'forro',     'sertanejo',
+  'bossa_nova', 'samba',     'bossa_nova', 'sertanejo', 'samba',
+  'forro',      'forro',     'sertanejo',  'sertanejo', 'samba',
+  'bossa_nova', 'samba',     'samba',      'sertanejo', 'forro',
+  ... 2148 more items
+]
+
+Executed in   61,21 mins   fish           external
+   usr time   65,50 mins  701,00 micros   65,50 mins
+   sys time    0,46 mins  132,00 micros    0,46 mins
