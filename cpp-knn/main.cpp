@@ -62,14 +62,15 @@ int main(int argc, char *argv[])
     vector<float> current_test, current_train;
     vector<vector<Result>> result;
     vector<Result> aux;
-    ifstream TEST_FILE("../bases/test_59_small.data");
-    ifstream TRAIN_FILE("../bases/train_59_small.data");
+    ifstream TEST_FILE("../bases/test_59.data");
+    ifstream TRAIN_FILE("../bases/train_59.data");
     if (!(TEST_FILE.is_open() && TRAIN_FILE.is_open()))
         return 0;
 
     while (getline(TEST_FILE, test_line))
     {
         current_test = split(test_line, ",", &classtype);
+        aux.clear();
 
         while (getline(TRAIN_FILE, train_line))
         {
