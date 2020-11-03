@@ -65,7 +65,17 @@ const findClasses = (sortedDistances, k) => {
       forro: 0,
       rap: 0,
       axe: 0,
-      bossa_nova: 0
+      bossa_nova: 0,
+      samba_pagode: 0,
+      rap_hip_hop: 0,
+      "'samba'": 0,
+      "'sertanejo'": 0,
+      "'forro'": 0,
+      "'rap'": 0,
+      "'axe'": 0,
+      "'bossa_nova'": 0,
+      "'samba_pagode'": 0,
+      "'rap_hip_hop'": 0,
     })
   )
   const definitive = classesCounts.map(item => {
