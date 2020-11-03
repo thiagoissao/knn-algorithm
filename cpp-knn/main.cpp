@@ -17,7 +17,7 @@ typedef struct Result
 
 typedef struct ClassResult
 {
-    int types[6];
+    int types[8];
 } ClassResult;
 
 vector<float> split(string str, string delimiter, string *end)
@@ -47,7 +47,10 @@ Result calculateDistance(vector<float> test, vector<float> train, string classty
     Result aux;
     aux.distance = 0;
 
-    aux.classType = classtype;
+    if (classtype.substr(0, 1).compare("'") == 0)
+        aux.classType = classtype.substr(1, classtype.size() - 2);
+    else
+        aux.classType = classtype;
     for (int i = 0; i < test.size(); i++)
     {
         aux.distance += absolute(test.at(i), train.at(i));
@@ -74,6 +77,10 @@ void calculateClass(string str, ClassResult *x)
         x->types[4]++;
     else if (str.compare("bossa_nova") == 0)
         x->types[5]++;
+    else if (str.compare("samba_pagode") == 0)
+        x->types[6]++;
+    else if (str.compare("rap_hip_hop") == 0)
+        x->types[7]++;
 }
 
 string resultClass(ClassResult x)
@@ -85,7 +92,7 @@ string resultClass(ClassResult x)
         {
             greater = x.types[i];
             greaterIndex = i;
-        }   
+        }
     }
 
     if (greaterIndex == 0)
@@ -100,6 +107,10 @@ string resultClass(ClassResult x)
         return "Axe";
     else if (greaterIndex == 5)
         return "Bossa Nova";
+    else if (greaterIndex == 5)
+        return "Samba Pagode";
+    else if (greaterIndex == 5)
+        return "Rap Hip Hop";
 
     return "";
 }

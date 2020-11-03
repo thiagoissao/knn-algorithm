@@ -1,6 +1,9 @@
 # base para testes
 /bases
 
-#dependencias js
+# dependencias js
 /js-knn/node_modules
 /js-knn/package-lock.json
+
+# vscode
+/.vscode
