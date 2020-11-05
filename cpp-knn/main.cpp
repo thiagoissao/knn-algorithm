@@ -153,7 +153,7 @@ int main(int argc, char *argv[])
     for (vector<Result> x : result)
     {
         cout << "\n==========Test #" << counter++ << "==========\n";
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 8; i++)
             classResult.types[i] = 0;
         for (int k = 0; k < stoi(argv[1]); k++)
         {
