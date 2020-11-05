@@ -86,7 +86,7 @@ void calculateClass(string str, ClassResult *x)
 string resultClass(ClassResult x)
 {
     int greater = x.types[0], greaterIndex = 0;
-    for (int i = 1; i < 6; i++)
+    for (int i = 1; i < 8; i++)
     {
         if (x.types[i] > greater)
         {
@@ -107,9 +107,9 @@ string resultClass(ClassResult x)
         return "Axe";
     else if (greaterIndex == 5)
         return "Bossa Nova";
-    else if (greaterIndex == 5)
+    else if (greaterIndex == 6)
         return "Samba Pagode";
-    else if (greaterIndex == 5)
+    else if (greaterIndex == 7)
         return "Rap Hip Hop";
 
     return "";
